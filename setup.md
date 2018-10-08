@@ -18,6 +18,7 @@ The idea is to `ssh` without password between nodes. `spark1` must be able to `s
 
 ```
 # ssh-keygen
-# for i in master slave1 slave2; do ssh-copy-id $i; done
+# for i in spark1 spark2 spark3; do ssh-copy-id $i; done
 ```
-It will keep asking you password when log into other slave nodes. Type the password you set earlier when created `hadoop` user. If the passwordless functions as expected, you should be able to ssh between each node without password. Test in each node. `Ctrl+d` to log out from the node. 
+`ssh-copy-id` will copy `id_rsa.pub` key to `authorized_keys` file (will be created) in other nodes. So when it tries to establish the connection, it will first ask the password of the node it's sshing into. 
+
