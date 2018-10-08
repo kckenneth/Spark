@@ -109,6 +109,8 @@ sbin/stop-all.sh - Stops both the master and the slaves as described above
 Start the master and check if it's working at `http://<master_ip>:8080/` = `http://50.23.91.125:8080`
 ```
 # $SPARK_HOME/sbin/start-master.sh
+
+starting org.apache.spark.deploy.master.Master, logging to /usr/local/spark/logs/spark-root-org.apache.spark.deploy.master.Master-1-spark1.mids.com.out
 ```
 Start the slaves, refresh the browser and check if all workers are now active. 
 ```
