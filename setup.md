@@ -12,6 +12,17 @@ $ slcli vs create --datacenter=sjc01 --hostname=spark1 --domain=mids.com --billi
 $ slcli vs create --datacenter=sjc01 --hostname=spark2 --domain=mids.com --billing=hourly --cpu=2 --memory=4096 --disk=100 --os=CENTOS_LATEST_64
 $ slcli vs create --datacenter=sjc01 --hostname=spark3 --domain=mids.com --billing=hourly --cpu=2 --memory=4096 --disk=100 --os=CENTOS_LATEST_64
 ```
+# Setup DNS (on all nodes)
+To easily ssh with the name instead of the IP addresses, we will setup the DNS. 
+
+```
+# vi /etc/hosts
+
+127.0.0.1     localhost.localdomain localhost
+50.22.13.216  spark1
+50.22.13.194  spark2
+50.22.13.217  spark3
+```
 
 # Setup passwordless ssh
 The idea is to `ssh` without password between nodes. `spark1` must be able to `ssh spark1`, `ssh spark2` and `ssh spark3`. You already know by now that to ssh using the name requires you to set up at `/etc/hosts`. Without password requires you to setup `ssh-keygen` generation. 
@@ -44,8 +55,44 @@ Set Spark path
 # echo export SPARK_HOME=\"/usr/local/spark\" >> /root/.bash_profile
 # source /root/.bash_profile
 ```
-# Configure Spark
+# Configure Spark (on spark1)
 
+```
+# cd $SPARK_HOME/conf/
+# vi slaves
+
+spark1
+spark2
+spark3
+```
+
+# Copy files to spark1
+We will copy moby10b.txt and src directory into our spark1 node and check their directory in our node. 
+```
+# cd /root
+# git clone https://github.com/MIDS-scaling-up/coursework.git
+```
+moby10b.txt and src directory
+```
+
+
+```
+
+# Start Spark
+we will start spark from spark1 as master node. There are a few script you should be familiar with.  
+```
+sbin/start-master.sh - Starts a master instance on the machine the script is executed on
+sbin/start-slaves.sh - Starts a slave instance on each machine specified in the conf/slaves file
+sbin/start-all.sh - Starts both a master and a number of slaves as described above
+sbin/stop-master.sh - Stops the master that was started via the bin/start-master.sh script
+sbin/stop-slaves.sh - Stops all slave instances on the machines specified in the conf/slaves file
+sbin/stop-all.sh - Stops both the master and the slaves as described above
+```
+
+Start the master and check if it's working at `http://<master_ip>:8080/`
+```
+# $SPARK_HOME/sbin/start-master.sh
+```
 
 
 
