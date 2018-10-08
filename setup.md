@@ -93,6 +93,20 @@ Start the master and check if it's working at `http://<master_ip>:8080/`
 ```
 # $SPARK_HOME/sbin/start-master.sh
 ```
+Start the slaves, refresh the browser and check if all workers are now active. 
+```
+# $SPARK_HOME/sbin/start-slaves.sh
+```
+
+# Calculate Pi
+```
+# $SPARK_HOME/bin/run-example SparkPi
+```
+
+Question 1: What value of PI to you get? Why is the value not "exact"? For a hint, see `$SPARK_HOME/examples/src/main/python/pi.py`
+
+
+
 
 
 
