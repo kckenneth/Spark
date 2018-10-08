@@ -91,8 +91,8 @@ We will copy moby10b.txt and src directory into our spark1 node and check their 
 ```
 moby10b.txt and src directory
 ```
-
-
+/root/coursework/week6/hw/apache_spark_introduction/moby10b.txt
+/root/coursework/week6/hw/apache_spark_introduction/src/spark
 ```
 
 # Start Spark
