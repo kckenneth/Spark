@@ -12,6 +12,18 @@ $ slcli vs create --datacenter=sjc01 --hostname=spark1 --domain=mids.com --billi
 $ slcli vs create --datacenter=sjc01 --hostname=spark2 --domain=mids.com --billing=hourly --cpu=2 --memory=4096 --disk=100 --os=CENTOS_LATEST_64
 $ slcli vs create --datacenter=sjc01 --hostname=spark3 --domain=mids.com --billing=hourly --cpu=2 --memory=4096 --disk=100 --os=CENTOS_LATEST_64
 ```
+Check the servers provisioned
+```
+$ slcli vs list
+
+:..........:..........:...............:..............:............:........:
+:    id    : hostname :   primary_ip  :  backend_ip  : datacenter : action :
+:..........:..........:...............:..............:............:........:
+: 63066095 :  spark1  :  50.23.91.125 : 10.53.47.13  :   sjc01    :   -    :
+: 63066109 :  spark2  :  50.23.91.122 : 10.53.47.30  :   sjc01    :   -    :
+: 63066153 :  spark3  :  50.23.91.126 : 10.53.47.34  :   sjc01    :   -    :
+:..........:..........:...............:..............:............:........:
+```
 # Setup DNS (on all nodes)
 To easily ssh with the name instead of the IP addresses, we will setup the DNS. 
 
@@ -19,9 +31,9 @@ To easily ssh with the name instead of the IP addresses, we will setup the DNS.
 # vi /etc/hosts
 
 127.0.0.1     localhost.localdomain localhost
-50.22.13.216  spark1
-50.22.13.194  spark2
-50.22.13.217  spark3
+50.23.91.125  spark1
+50.23.91.122  spark2
+50.23.91.126  spark3
 ```
 
 # Setup passwordless ssh
@@ -89,7 +101,7 @@ sbin/stop-slaves.sh - Stops all slave instances on the machines specified in the
 sbin/stop-all.sh - Stops both the master and the slaves as described above
 ```
 
-Start the master and check if it's working at `http://<master_ip>:8080/`
+Start the master and check if it's working at `http://<master_ip>:8080/` = `http://50.23.91.125:8080`
 ```
 # $SPARK_HOME/sbin/start-master.sh
 ```
