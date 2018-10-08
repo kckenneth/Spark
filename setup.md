@@ -22,3 +22,30 @@ The idea is to `ssh` without password between nodes. `spark1` must be able to `s
 ```
 `ssh-copy-id` will copy `id_rsa.pub` key to `authorized_keys` file (will be created) in other nodes. So when it tries to establish the connection, it will first ask the password of the node it's sshing into. 
 
+# Install Java, SBT and Spark (on all nodes)
+
+Install SBT
+```
+# curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+# yum install -y java-1.8.0-openjdk-devel sbt git
+```
+Set Jave path in `~/.bash_profile`. After you set the export path, you need to `source` it so that the path becomes activated. To test later, check the java version.
+```
+# echo export JAVA_HOME=\"$(readlink -f $(which java) | grep -oP '.*(?=/bin)')\" >> /root/.bash_profile
+# source /root/.bash_profile
+# $JAVA_HOME/bin/java -version
+```
+Install Spark
+```
+# curl https://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz | tar -zx -C /usr/local --show-transformed --transform='s,/*[^/]*,spark,'
+```
+Set Spark path
+```
+# echo export SPARK_HOME=\"/usr/local/spark\" >> /root/.bash_profile
+# source /root/.bash_profile
+```
+# Configure Spark
+
+
+
+
