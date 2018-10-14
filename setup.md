@@ -149,7 +149,7 @@ starting org.apache.spark.deploy.master.Master, logging to /usr/local/spark/logs
 ```
 
 <p align="center">
-<img src="img/spark.png" width="600"></p>
+<img src="img/spark.png" width="800"></p>
 <p align="center">Figure 1. Spark</p>
 
 Start the slaves, refresh the browser and check if all workers are now active. 
@@ -158,7 +158,7 @@ Start the slaves, refresh the browser and check if all workers are now active.
 ```
 
 <p align="center">
-<img src="img/spark_workers.png" width="600"></p>
+<img src="img/spark_workers.png" width="800"></p>
 <p align="center">Figure 2. Spark with 3 workers</p>
 
 # Calculate Pi
