@@ -166,7 +166,52 @@ Start the slaves, refresh the browser and check if all workers are now active.
 # $SPARK_HOME/bin/run-example SparkPi
 ```
 
-Question 1: What value of PI to you get? Why is the value not "exact"? For a hint, see `$SPARK_HOME/examples/src/main/python/pi.py`
+#### Question 1: What value of PI to you get? Why is the value not "exact"? For a hint, see `$SPARK_HOME/examples/src/main/python/pi.py` 
+
+```
+Pi is roughly 3.1411357056785283
+```
+
+## Going into Spark Shell
+
+```
+# $SPARK_HOME/bin/spark-shell
+
+...
+...
+Spark session available as 'spark'.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.1.1
+      /_/
+         
+Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_181)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala>
+```
+
+We're going to read `moby10b.txt` in spark and analzye afterwards. 
+```
+scala> val textFile = sc.textFile("/root/coursework/week6/hw/apache_spark_introduction/moby10b.txt")
+```
+
+#### Question 2: How many lines does the file have?
+```
+scala> textFile.count()
+res3: Long = 23244
+```
+#### Question 3: What is the first line?
+```
+scala> textFile.first()
+res4: String = **The Project Gutenberg Etext of Moby Dick, by Herman Melville**
+```
+
+#### Question 4: How many lines contain the text "whale"?
+
 
 
 
