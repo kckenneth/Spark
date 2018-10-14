@@ -20,9 +20,9 @@ $ slcli vs list
 :..........:..........:...............:..............:............:........:
 :    id    : hostname :   primary_ip  :  backend_ip  : datacenter : action :
 :..........:..........:...............:..............:............:........:
-: 63066095 :  spark1  :  50.23.91.125 : 10.53.47.13  :   sjc01    :   -    :
-: 63066109 :  spark2  :  50.23.91.122 : 10.53.47.30  :   sjc01    :   -    :
-: 63066153 :  spark3  :  50.23.91.126 : 10.53.47.34  :   sjc01    :   -    :
+: 63442913 :  spark1  : 50.97.252.101 : 10.53.47.13  :   sjc01    :   -    :
+: 63442935 :  spark2  : 50.97.252.103 : 10.53.47.34  :   sjc01    :   -    :
+: 63442941 :  spark3  : 50.97.252.102 : 10.53.47.30  :   sjc01    :   -    :
 :..........:..........:...............:..............:............:........:
 ```
 # Setup DNS (on all nodes)
@@ -32,19 +32,53 @@ To easily ssh with the name instead of the IP addresses, we will setup the DNS.
 # vi /etc/hosts
 
 127.0.0.1     localhost.localdomain localhost
-50.23.91.125  spark1
-50.23.91.122  spark2
-50.23.91.126  spark3
+50.97.252.101  spark1
+50.97.252.103  spark2
+50.97.252.102  spark3
 ```
 
 # Setup passwordless ssh
 The idea is to `ssh` without password between nodes. `spark1` must be able to `ssh spark1`, `ssh spark2` and `ssh spark3`. You already know by now that to ssh using the name requires you to set up at `/etc/hosts`. Without password requires you to setup `ssh-keygen` generation. 
 
 ```
-# ssh-keygen
+# ssh-keygen -f ~/.ssh/id_rsa -b 2048 -t rsa 
+# cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
+# chmod 600 ~/.ssh/authorized_keys
+
+# scp ~/.ssh/* root@50.97.252.103:/root/.ssh/
+# scp ~/.ssh/* root@50.97.252.102:/root/.ssh/
+
 # for i in spark1 spark2 spark3; do ssh-copy-id $i; done
 ```
 `ssh-copy-id` will copy `id_rsa.pub` key to `authorized_keys` file (will be created) in other nodes. So when it tries to establish the connection, it will first ask the password of the node it's sshing into. 
+
+To test the ssh passwordless for all nodes 
+
+```
+# vi test.sh
+```
+Copy the following script 
+```
+#!/bin/bash
+
+# Edit node list
+nodes="spark1 spark2 spark3"
+
+# Test ssh configuration
+for i in $nodes
+ do echo -n "Testing ssh ${i}: "
+ ssh ${i} "ssh ${i} date"
+done
+```
+Run the script 
+```
+# chmod 755 test.sh
+# ./test.sh
+
+Testing ssh spark1: Sun Oct 14 17:27:07 CDT 2018
+Testing ssh spark2: Sun Oct 14 17:27:08 CDT 2018
+Testing ssh spark3: Sun Oct 14 17:27:09 CDT 2018
+```
 
 # Install Java, SBT and Spark (on all nodes)
 
