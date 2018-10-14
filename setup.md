@@ -26,15 +26,15 @@ $ slcli vs list
 :..........:..........:...............:..............:............:........:
 ```
 # Setup DNS (on all nodes)
-To easily ssh with the name instead of the IP addresses, we will setup the DNS. 
+To easily ssh with the name instead of the IP addresses, we will setup the DNS. You need to add the `spark1.mids.com` as well. 
 
 ```
 # vi /etc/hosts
 
 127.0.0.1     localhost.localdomain localhost
-50.97.252.101  spark1
-50.97.252.103  spark2
-50.97.252.102  spark3
+50.97.252.101  spark1.mids.com spark1
+50.97.252.103  spark2.mids.com spark2
+50.97.252.102  spark3.mids.com spark3
 ```
 
 # Setup passwordless ssh
@@ -141,16 +141,25 @@ sbin/stop-slaves.sh - Stops all slave instances on the machines specified in the
 sbin/stop-all.sh - Stops both the master and the slaves as described above
 ```
 
-Start the master and check if it's working at `http://<master_ip>:8080/` = `http://50.23.91.125:8080`
+Start the master and check if it's working at `http://<master_ip>:8080/` = `http://50.97.252.101:8080`
 ```
 # $SPARK_HOME/sbin/start-master.sh
 
 starting org.apache.spark.deploy.master.Master, logging to /usr/local/spark/logs/spark-root-org.apache.spark.deploy.master.Master-1-spark1.mids.com.out
 ```
+
+<p align="center">
+<img src="img/spark.png" width="600"></p>
+<p align="center">Figure 1. Spark</p>
+
 Start the slaves, refresh the browser and check if all workers are now active. 
 ```
 # $SPARK_HOME/sbin/start-slaves.sh
 ```
+
+<p align="center">
+<img src="img/spark_workers.png" width="600"></p>
+<p align="center">Figure 2. Spark with 3 workers</p>
 
 # Calculate Pi
 ```
