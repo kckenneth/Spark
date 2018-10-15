@@ -217,9 +217,63 @@ scala> linesWithWhale.count()
 res5: Long = 1276
 ```
 
+#### Question 5: How many output files (ignore _SUCCESS file) does Spark write when the file RDD (file.saveAsTextFile( outputDirectory)) is written to the output directory?
+
+Answer: Spark writes 2 files 
+```
+part-00000  part-00001
+```
+
+**Execution**
+
+Compile the java file in the `src` directory. Use the moby10b.txt as an input and specify the output directory. You must run the command from the `src` directory. 
+
+```
+# cd /root/coursework/week6/hw/apache_spark_introduction/src/
+
+# javac -cp .:$SPARK_HOME/jars/* spark/SparkJava8Example.java
+```
+
+##### Sample 
+```
+# java -cp .:$SPARK_HOME/jars/* spark.SparkJava8Example /root/coursework/week6/hw/apache_spark_introduction/moby10b.txt /<yourOutputDirectory>
+```
+
+##### Real command
+```
+# java -cp .:$SPARK_HOME/jars/* spark.SparkJava8Example /root/coursework/week6/hw/apache_spark_introduction/moby10b.txt /root/hw6
+```
+
+#### Question 5b: Change the line: JavaRDD file = sc.textFile(inputFile); to: JavaRDD file = sc.textFile(inputFile,1); and rerun the sample. How many outfiles are created when the RDD is saved? Explain the difference.
+
+You need to change the line in SparkJava8Example.java file. 
+```
+# grep "sc.textFile" SparkJava8Example.java
+			JavaRDD<String> file = sc.textFile(inputFile);
+   
+# vi SparkJava8Example.java
+/sc.textFile
+<press> i
+
+sc.textFile(inputfile,1)
+
+<press> esc
+:wq!
+```
+You also need to remake the java class file. So remove the existing class file first. After that, go one level up to `src` directory. Make sure you already deleted the prior output files. 
+```
+# rm SparkJava8Example.class
+# cd ..
+```
+
+```
+# javac -cp .:$SPARK_HOME/jars/* spark/SparkJava8Example.java
+# java -cp .:$SPARK_HOME/jars/* spark.SparkJava8Example /root/coursework/week6/hw/apache_spark_introduction/moby10b.txt /root/hw6
 
 
-/root/coursework/week6/hw/apache_spark_introduction/src/spark
+
+
+
 
 
 
