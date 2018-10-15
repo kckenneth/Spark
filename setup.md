@@ -250,6 +250,7 @@ Only one file is created, excluding `_SUCCESS`.
 ```
 part-00000  _SUCCESS
 ```
+The RDD (Resilient Distributed Dataset) by definition tries to save files in partitions. So when the file is large, it will partition into several duplicates. Here we changed the parameters into 1, so it only saved the file in one dataset. 
 
 **Execution**
 
