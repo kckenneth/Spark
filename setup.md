@@ -300,7 +300,7 @@ In order to answer question 6 to 10, I thought of analyzing moby10b.txt in pyspa
 
 ```
 # sudo yum install centos-release-scl
-# sudo yum install rh-python36 pyspark jupyter
+# sudo yum install rh-python36 bzip2 pyspark jupyter
 # python --version
 
 Python 2.7.5
@@ -352,26 +352,9 @@ I'd like to launch pyspark in jupyter notebook. There are two options to use `py
 - Option1: When you'd call `# pyspark`, it will automatically launch jupyter-notebook and you can use `pyspark` in jupyter-notebook. It's fast.  
 - Option2: You launch `# jupyter-notebook` and `import findspark` library. This is good when you want to work in different IDE. You just need to do `# pip install findspark` for later use in the jupyter notebook. 
 
-Here I will go with the option1.  
-
-
-
-### Anaconda (Optional) 
-
-If you're starting from scratch, you'll need to install several apps. 
-
-1. Anaconda3 (which requires bzip2)
-
+Here I will go with the option1. Checking the pyspark from earlier installation. 
 ```
-# pip install bzip2
-# wget https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh
-# bash Anaconda3-4.3.0-Llinux-x86_64.sh
-```
-Accept license agreeement, yes, and yes to the last question on 'prepend the PATH'. You need to start a new terminal, log into your account. This time if you call python by `# python` python will launch from Anaconda path. 
-
-Launch pyspark
-```
-# pyspark
+# pyspark --version
 
 Welcome to
       ____              __
@@ -382,16 +365,41 @@ Welcome to
 
 Using Python version 3.6.3 (default, Mar 20 2018 13:50:41)
 SparkSession available as 'spark'.
->>> 
 ```
+Once the installation is checked, we need to modify the export path of the `pyspark`. 
+```
+# vi /root/.bashrc
+```
+Copy and paste the following 
+```
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+```
+To activate the .bashrc
+```
+# source /root/.bashrc
+```
+Lauch the pyspark
+```
+# pyspark
+
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8123/?token=d23a6df8xxxxxxxxx
+```
+Change the localhost to my primary IP address: `50.97.252.101`. 
 
 
 
+----------------
+### Anaconda (Optional Installation) 
 
+If you're starting from scratch, you'll need to install several apps. 
 
+1. Anaconda3 (which requires bzip2)
 
-
-
-
-
-
+```
+# wget https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh
+# bash Anaconda3-4.3.0-Linux-x86_64.sh
+```
+Accept license agreeement, yes, and yes to the last question on 'prepend the PATH'. You need to start a new terminal, log into your account. This time if you call python by `# python` python will launch from Anaconda path. 
