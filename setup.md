@@ -211,8 +211,15 @@ res4: String = **The Project Gutenberg Etext of Moby Dick, by Herman Melville**
 ```
 
 #### Question 4: How many lines contain the text "whale"?
+```
+scala> val linesWithWhale = textFile.filter(line => line.contains("whale"))
+scala> linesWithWhale.count()
+res5: Long = 1276
+```
 
 
+
+/root/coursework/week6/hw/apache_spark_introduction/src/spark
 
 
 
