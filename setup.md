@@ -193,6 +193,8 @@ Type :help for more information.
 
 scala>
 ```
+To learn more about Apache Spark API  
+https://spark.apache.org/docs/latest/quick-start.html
 
 We're going to read `moby10b.txt` in spark and analzye afterwards. 
 ```
@@ -221,7 +223,7 @@ res5: Long = 1276
 
 Answer: Spark writes 2 files 
 ```
-part-00000  part-00001
+part-00000  part-00001  _SUCCESS
 ```
 
 **Execution**
