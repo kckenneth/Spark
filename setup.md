@@ -294,11 +294,13 @@ You need to use a totally different directory even if you deleted the previous f
 
 #### Question 10: Rewrite the filtered file such that each line is mirrored or reversed. What are the first 20 lines of the mirrored RDD?
 
+## Jupyter Notebook, Pyspark
+
 In order to answer question 6 to 10, I thought of analyzing moby10b.txt in pyspark. So I need to install python in Centos OS first. First Centos also has its own software collection. To install those, I first need to install SCL release (Software Collection). 
 
 ```
 # sudo yum install centos-release-scl
-# sudo yum install rh-python36
+# sudo yum install rh-python36 pyspark jupyter
 # python --version
 
 Python 2.7.5
@@ -313,11 +315,6 @@ Python 3.6.3
 ```
 
 ### Setting up Jupyter Notebook
-
-I installed a few other apps that I think would be useful down the line. 
-```
-# pip install jupyter pyspark
-```
 
 You need to set up the configuration file for jupyter notebook to work in your browser. Remember, you're launching jupyter-notebook from the server. But you will get access to jupyter-notebook from your local machine browser. 
 
@@ -348,6 +345,16 @@ Go to your browser
 ```
 50.97.252.101:8123/?token ....
 ```
+
+### Setting up Pyspark in Jupyter Notebook
+
+I'd like to launch pyspark in jupyter notebook. There are two options to use `pyspark` in jupyter notebook.  
+- Option1: When you'd call `# pyspark`, it will automatically launch jupyter-notebook and you can use `pyspark` in jupyter-notebook. It's fast.  
+- Option2: You launch `# jupyter-notebook` and `import findspark` library. This is good when you want to work in different IDE. You just need to do `# pip install findspark` for later use in the jupyter notebook. 
+
+Here I will go with the option1.  
+
+
 
 ### Anaconda (Optional) 
 
