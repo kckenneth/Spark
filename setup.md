@@ -294,7 +294,7 @@ You need to use a totally different directory even if you deleted the previous f
 
 #### Question 10: Rewrite the filtered file such that each line is mirrored or reversed. What are the first 20 lines of the mirrored RDD?
 
-## Jupyter Notebook, Pyspark
+# Jupyter Notebook, Pyspark
 
 In order to answer question 6 to 10, I thought of analyzing moby10b.txt in pyspark. So I need to install python in Centos OS first. First Centos also has its own software collection. To install those, I first need to install SCL release (Software Collection). 
 
@@ -354,7 +354,7 @@ I'd like to launch pyspark in jupyter notebook. There are two options to use `py
 
 I played around with the option1 but didn't succeed with the moby10b.txt. I detailed the procedure for future reference in optional installation below. So I tried with option2 and it worked. So Here I will continue with the option2. Checking the pyspark from earlier installation. 
 
-
+https://github.com/kckenneth/Spark/blob/master/pyspark_setup.md
 
 ----------------
 # Optional Installation
