@@ -38,7 +38,7 @@ To easily ssh with the name instead of the IP addresses, we will setup the DNS. 
 ```
 
 # Setup passwordless ssh
-The idea is to `ssh` without password between nodes. `spark1` must be able to `ssh spark1`, `ssh spark2` and `ssh spark3`. You already know by now that to ssh using the name requires you to set up at `/etc/hosts`. Without password requires you to setup `ssh-keygen` generation. 
+The idea is to `ssh` without password between nodes. `spark1` must be able to `ssh spark1`, `ssh spark2` and `ssh spark3`. You already know by now that to ssh using the name requires you to set up at `/etc/hosts`. Without password, it requires you to setup `ssh-keygen` generation. 
 
 ```
 # ssh-keygen -f ~/.ssh/id_rsa -b 2048 -t rsa 
@@ -166,7 +166,7 @@ Start the slaves, refresh the browser and check if all workers are now active.
 # $SPARK_HOME/bin/run-example SparkPi
 ```
 
-#### Question 1: What value of PI to you get? Why is the value not "exact"? For a hint, see `$SPARK_HOME/examples/src/main/python/pi.py` 
+#### Question 1: What value of PI do you get? Why is the value not "exact"? For a hint, see `$SPARK_HOME/examples/src/main/python/pi.py` 
 
 ```
 Pi is roughly 3.1411357056785283
