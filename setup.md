@@ -352,7 +352,14 @@ I'd like to launch pyspark in jupyter notebook. There are two options to use `py
 - Option1: When you'd call `# pyspark`, it will automatically launch jupyter-notebook and you can use `pyspark` in jupyter-notebook. It's fast.  
 - Option2: You launch `# jupyter-notebook` and `import findspark` library. This is good when you want to work in different IDE. You just need to do `# pip install findspark` for later use in the jupyter notebook. 
 
-Here I will go with the option1. Checking the pyspark from earlier installation. 
+I played around with the option1 but didn't succeed with the moby10b.txt. I detailed the procedure for future reference in optional installation below. So I tried with option2 and it worked. So Here I will continue with the option2. Checking the pyspark from earlier installation. 
+
+
+
+----------------
+# Optional Installation
+### I. Option1. Pyspark in Jupyter Notebook
+
 ```
 # pyspark --version
 
@@ -379,7 +386,7 @@ To activate the .bashrc
 ```
 # source /root/.bashrc
 ```
-Lauch the pyspark
+Launch the pyspark
 ```
 # pyspark
 
@@ -389,10 +396,7 @@ Lauch the pyspark
 ```
 Change the localhost to my primary IP address: `50.97.252.101`. 
 
-
-
-----------------
-### Anaconda (Optional Installation) 
+### II. Anaconda (Optional Installation) 
 
 If you're starting from scratch, you'll need to install several apps. 
 
