@@ -312,10 +312,55 @@ Since python 2.7.5 is the default version, we will update the version by bash.
 Python 3.6.3
 ```
 
+### Setting up Jupyter Notebook
+
 I installed a few other apps that I think would be useful down the line. 
 ```
 # pip install jupyter pyspark
 ```
+
+You need to set up the configuration file for jupyter notebook to work in your browser. Remember, you're launching jupyter-notebook from the server. But you will get access to jupyter-notebook from your local machine browser. 
+
+```
+# jupyter notebook --generate-config
+
+Writing default config to: /root/.jupyter/jupyter_notebook_config.py
+
+```
+Modifying the configuration file
+```
+# cd /root/.jupyter/
+# vi jupyter_notebook_config.py
+```
+Copy the following script and paste it the jupyter_notebook_config.py
+```
+c = get_config()
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8123
+```
+Launch jupyter-notebook
+```
+# jupyter-notebook
+```
+
+Go to your browser 
+```
+50.97.252.101:8123/?token ....
+```
+
+### Anaconda (Optional) 
+
+If you're starting from scratch, you'll need to install several apps. 
+
+1. Anaconda3 (which requires bzip2)
+
+```
+# pip install bzip2
+# wget https://repo.continuum.io/archive/Anaconda3-4.3.0-Linux-x86_64.sh
+# bash Anaconda3-4.3.0-Llinux-x86_64.sh
+```
+Accept license agreeement, yes, and yes to the last question on 'prepend the PATH'. You need to start a new terminal, log into your account. This time if you call python by `# python` python will launch from Anaconda path. 
 
 Launch pyspark
 ```
