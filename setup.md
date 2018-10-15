@@ -246,8 +246,17 @@ Compile the java file in the `src` directory. Use the moby10b.txt as an input an
 
 #### Question 5b: Change the line: JavaRDD file = sc.textFile(inputFile); to: JavaRDD file = sc.textFile(inputFile,1); and rerun the sample. How many outfiles are created when the RDD is saved? Explain the difference.
 
+Only one file is created, excluding `_SUCCESS`. 
+```
+part-00000  _SUCCESS
+```
+
+**Execution**
+
 You need to change the line in SparkJava8Example.java file. 
 ```
+# cd /root/coursework/week6/hw/apache_spark_introduction/src/spark/
+
 # grep "sc.textFile" SparkJava8Example.java
 			JavaRDD<String> file = sc.textFile(inputFile);
    
@@ -260,15 +269,18 @@ sc.textFile(inputfile,1)
 <press> esc
 :wq!
 ```
-You also need to remake the java class file. So remove the existing class file first. After that, go one level up to `src` directory. Make sure you already deleted the prior output files. 
+You also need to remake the java class file. So remove the existing class file first. After that, go one level up to `src` directory. 
 ```
 # rm SparkJava8Example.class
 # cd ..
 ```
+You need to use a totally different directory even if you deleted the previous files in the same directory `hw6`.  
 
 ```
 # javac -cp .:$SPARK_HOME/jars/* spark/SparkJava8Example.java
-# java -cp .:$SPARK_HOME/jars/* spark.SparkJava8Example /root/coursework/week6/hw/apache_spark_introduction/moby10b.txt /root/hw6
+# java -cp .:$SPARK_HOME/jars/* spark.SparkJava8Example /root/coursework/week6/hw/apache_spark_introduction/moby10b.txt /root/hw6_1
+```
+
 
 
 
