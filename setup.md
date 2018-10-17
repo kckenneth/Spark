@@ -300,7 +300,7 @@ In order to answer question 6 to 10, I thought of analyzing moby10b.txt in pyspa
 
 ```
 # sudo yum install centos-release-scl
-# sudo yum install rh-python36 bzip2 pyspark jupyter
+# sudo yum install rh-python36 bzip2 pyspark
 # python --version
 
 Python 2.7.5
@@ -316,13 +316,24 @@ Python 3.6.3
 
 ### Setting up Jupyter Notebook
 
-You need to set up the configuration file for jupyter notebook to work in your browser. Remember, you're launching jupyter-notebook from the server. But you will get access to jupyter-notebook from your local machine browser. 
+You need to set up the configuration file for jupyter notebook to work in your browser. Remember, you're launching jupyter-notebook from the server. But you will get access to jupyter-notebook from your local machine browser. Jupyter requires Python 2.7 or 3.5 and higher. 
 
+If you have python2
+```
+# pip install --upgrade pip
+# python -m pip install --upgrade pip
+# python -m pip install jupyter
+```
+For python3
+```
+python3 -m pip install --upgrade pip
+python3 -m pip install jupyter
+```
+To have a configuration file
 ```
 # jupyter notebook --generate-config
 
 Writing default config to: /root/.jupyter/jupyter_notebook_config.py
-
 ```
 Modifying the configuration file
 ```
