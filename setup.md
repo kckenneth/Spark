@@ -84,6 +84,8 @@ Testing ssh spark3: Sun Oct 14 17:27:09 CDT 2018
 
 Note: In Ubuntu, you can download DEB packages using the `apt-get` package manager. Ubuntu also updates its applicatin packages frequently which makes the latest update easily available but it also makes the Ubuntu less stable because of the frequency of the update. Meanwhile, in CentOS, you have to use the `yum` command to download and install RPM packages from the central repository. The downside of stable CentOS is you have to install latest software manually if necessary. 
 
+rpm = redhat package manager  
+
 Install SBT
 ```
 # curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
