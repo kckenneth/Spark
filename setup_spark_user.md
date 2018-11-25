@@ -19,7 +19,7 @@ OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
 Install Spark
 ```
 # curl -O https://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz 
-# sudo tar -zx spark-2.1.1-bin-hadoop2.7.tgz -C /usr/local --show-transformed --transform='s,/*[^/]*,spark,'
+# sudo tar xvf spark-2.1.1-bin-hadoop2.7.tgz -C /usr/local --show-transformed --transform='s,/*[^/]*,spark,'
 ```
 Set Spark path
 ```
