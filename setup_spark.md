@@ -86,6 +86,8 @@ Note: In Ubuntu, you can download DEB packages using the `apt-get` package manag
 
 rpm = redhat package manager  
 
+If you're installing as a user, not root, go <a href=https://github.com/kckenneth/Spark/blob/master/setup_spark_user.md>Here</a>.
+
 Install SBT
 ```
 # curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
