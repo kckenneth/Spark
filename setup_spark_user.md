@@ -54,6 +54,18 @@ Start the master and check if it's working at `http://<master_ip>:8080/` = `http
 
 starting org.apache.spark.deploy.master.Master, logging to /usr/local/spark/logs/spark-root-org.apache.spark.deploy.master.Master-1-spark1.mids.com.out
 ```
+To start all other nodes, you need to give the permission to create log if necessary. In other nodes, do the following
+```
+# sudo chmod -R 777 /usr/local/spark
+```
+You can now start all other slave nodes. You'd see the spark cluster is now up and running with 3 nodes. 
+```
+# $SPARK_HOME/sbin/start-slaves.sh
+```
+
+<p align="center">
+<img src="img/spark_user_workers.png" width="800"></p>
+<p align="center">Figure 1. Spark with 3 nodes</p>
 
 ## Going into Spark Shell
 
