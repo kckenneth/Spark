@@ -30,7 +30,7 @@ Set Spark path
 
 ```
 # cd $SPARK_HOME/conf/
-# vi slaves
+# sudo vi slaves
 
 spark1
 spark2
